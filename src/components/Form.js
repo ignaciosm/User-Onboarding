@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
+import '../App.css';
 
-const App = () => {
+const Form = () => {
   return (
     <div>
       <p className="">Ignacio test</p>
