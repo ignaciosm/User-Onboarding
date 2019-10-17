@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 import '../App.css';
 
@@ -51,8 +52,15 @@ const FormikLoginForm = withFormik({
 
   handleSubmit(values, { resetForm } ) {
     console.log(values);
-    resetForm();
-    //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+    axios
+      .post("https://reqres.in/api/users", values)
+      .then(res => {
+        console.log(res); // Data was created successfully and logs to console
+        resetForm();
+      })
+      .catch(err => {
+        console.log(err); // There was an error creating the data and logs to console
+      });
   }
 })(LoginForm);
 
